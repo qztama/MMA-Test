@@ -1,0 +1,56 @@
+<ion-view title="Login">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form class="list" ng-hide = "$root.sessionID">
+            <ion-list>
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input type="text" autocapitalize="none" autocorrect="off" placeholder="" ng-model="username">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" autocorrect="off" placeholder="" ng-model="password">
+                </label>
+            </ion-list>
+            <div class="spacer" style="height: 40px;"></div>
+            <br>
+            <br>
+            <br>
+            <a href="#" ng-click="login(username, password)" class="button button-stable button-block  button-full">Log in</a>
+
+            <a href="#" class="button button-positive button-clear button-block " onClick="window.open('http://meamdev.ucdavis.edu:8000/accounts/register/', '_system'); return false;"> Create an account</a>
+
+            <!-- <a ng-href="http://google.com" class="button button-positive button-clear button-block ">Or create an account</a> -->
+            <label class="item item-input">
+            <span class="input-label">Domain</span>
+            <input type="text" autocapitalize="none" autocorrect="off" size="40"  ng-model="$root.domain">
+            </label>
+
+            <label class="item item-input">
+            <span class="input-label">Port</span>
+            <input type="text" autocapitalize="none" autocorrect="off" size="20"  ng-model="$root.port">
+
+            </label>
+            <a href="#" ng-click="changeHosts(domain + ':' + port + '/')" class="button button-stable button-block  button-full">Change Hosts</a>
+         
+
+        </form>
+        <div ng-hide="!$root.sessionID">
+            <h1> Welcome, {{$root.username}}! </h1>
+
+            <p> <b>!!Important!! For iOS users do not have your phone set to silent or you will not be able to listen to Mementos</b>
+                <br>
+                To schedule notifications, click the Calendar Tab and click the "Add Availability" button.
+                Select the time and day and submit.  You will fill in the info corresponding to the block of time you are available.
+                <br>
+                To record a memory, go to the Memento tab.
+                Fill in the form fields and hit submit when you are done.  
+                If you want another Memento you will have the option to after submitting your response.
+                <br>
+                For the app to log you in automatically when opening the app, do not log out from the app when closing.
+                <br>
+            </p>
+        <br><br>
+            <a href="#" class="button button-stable button-block  button-full" ng-click="logout()">Log Out</a>
+        </div>
+    </ion-content>
+</ion-view>

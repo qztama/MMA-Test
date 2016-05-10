@@ -1,0 +1,56 @@
+<ion-view title="My Music Memento Scheduler">    
+    <ion-pane>
+        <div id="gridHeader" class="grid-header"  ng-style="{'overflow': 'false', 'width' : (100 * days.length + 60) + 'px', 'left':'-'+timerleft}">
+           <div class="grid-header-clock" style="left: 0px;">
+        
+            </div>
+
+            <div class="grid-header-labels" ng-repeat="day in days">
+                <div class="grid-header-label">{{day}}
+                    <div class="grid-header-label-divider"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- <div ng-style="{'overflow' : 'false', 'width':windowWidth, 'top':but_top}">
+            <button ng-click="onAddAvailability()" class="button button-stable button-block button-calm" width="25px">
+                            + Add Availability
+            </button>
+        </div> -->
+        <ion-content scroll="true" direction="xy"  has-bouncing="false"  on-scroll="gotScrolled()">
+            <div id="gridBody" class="grid-body ui-block"  >
+                <div style="position:relative">
+                    <div id="gridTimesHolder" class="grid-times-holder" ng-style="{'left':timerleft}" >
+                        
+                        <div class="grid-times" ng-repeat="hour in hours">
+                            <div class="grid-time-label">{{hour}}</div> 
+                        </div>
+                    </div>
+                    <div class="grid-sessions" ng-style="{'height' : (25 * hours.length) + 'px'}">
+                        <div class="grid-sessions-day" ng-style="{'overflow': 'true', 'width' : (100 * days.length + 60) + 'px'}"
+                             >
+                            <div ng-repeat="event in events| filter:{ dateformat: day.dateformat}">
+                                <div class="grid-session-cell" ng-style="{'top':event.top, 'left':event.left, 'height':event.height, 'background-color':event.color}" ng-click="deleteEvent(event.day, event.starthour, event.endhour)">
+                                    <div class="grid-session-time">{{event.starthour}}-{{event.endhour}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <button ng-click="onAddAvailability()" class="button button-stable button-block button-calm" width="25px" ng-style="{'left':timerleft}">
+                            + Add Availability
+                        </button> -->
+
+                        <!-- <button ng-click="testButton()" class="button button-stable button-block button-calm" width="25px" ng-style="{'left':timerleft}">
+                            * Test Button
+                        </button> -->
+                    </div>  
+                    <button ng-click="onAddAvailability()" class="button button-stable button-block button-calm" width="25px" ng-style="{'left':timerleft}">
+                            + Add Availability
+                        </button>
+                    </div>
+            </div>
+
+        </ion-content>
+    </ion-pane>
+</ion-view>

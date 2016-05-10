@@ -1,0 +1,67 @@
+<ion-view title="Memento">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+      <div class="list card">
+
+      <div class="item item-avatar">
+        <img src="http://files.softicons.com/download/android-icons/android-application-icons-by-bharath-prabhuswamy/png/600x600/Music.png">
+        <h2>{{curSWong.album}}</h2>
+        <p>{{curSong.artist}}</p>
+        <p>{{curSong.title}} | {{curSong.year}}</p>
+      </div>
+
+      <div class="row">
+        <div class="col">
+           <a class="item item-icon-left assertive" href="#" ng-click=" toggleSongPlayback()">
+            <i class="icon ion-music-note"></i>
+            {{playButtonText}}
+          </a>
+        </div>
+        <div class="col">
+           <a class="item item-icon-left assertive" href="#" ng-click="audio.currentTime = 0">
+            <i class="icon ion-loop"></i>
+            Replay
+          </a>
+        </div>
+       
+      </div>
+      <br>
+      <br>
+      <br>
+
+      <label class="item item-input">
+        <textarea placeholder="Describe your memories associated with this song" rows = "4" ng-model="response.memory"></textarea>
+      </label>
+    </div>
+
+    <ion-checkbox ng-model="bShowOptional" ng-click="syncPref(bShowOptional)">Advanced options</ion-checkbox>
+    <div class="list list-inset" ng-Hide = "!bShowOptional">
+      <label class="item item-input">
+        <input type="text" placeholder="Person(Optional)" ng-model= "response.personType">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Event(Optional)" ng-model= "response.eventType">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Place(Optional)" ng-model= "response.placeType">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Emotion(Optional)" ng-model="response.emotionType">
+      </label>
+      
+      
+    </div>
+
+    <div class="list list-inset">
+      <ion-checkbox ng-model="response.sharing[sharedGlobally]">Make my memories public</ion-checkbox>
+    </div>
+
+    <button class="button button-block button-positive" ng-click="submitResponse(response); clearResponseFields(response);">
+      Submit Response
+    </button>
+
+     <button class="button button-block button-positive" ng-click="getNewSong(response); clearResponseFields(response);">
+      I want another song
+    </button>
+
+    </ion-content>
+</ion-view>
